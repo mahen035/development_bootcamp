@@ -118,3 +118,24 @@ function showData(){
          </tr>   `
     })
 }
+
+function read(id1, title1, author1, year1){
+    if(id1){
+        var item=[{
+            id: id1,
+            title: title1,
+            author: author1,
+            year: year1,
+            isComplete: 1
+        }]
+        bookList = JSON.parse(localStorage.getItem('listItem3')) ?? []
+        books = item.concat(bookList)
+        localStorage.setItem('listItem3', JSON.stringify(books))
+    }
+    bookList4 = JSON.parse(localStorage.getItem('listItem4')) ?? []
+    bookList4 = bookList4.filter(value => {
+        return value.id != id1
+    })
+    localStorage.setItem('listItem4', JSON.stringify(bookList4))
+    showData()
+}
