@@ -81,11 +81,13 @@ function showData(){
                     <i class="fa fa-check"></i>
                 </button>
             </td>
-            <td><button class="btn btn-sm btn-success" >
+            <td><button class="btn btn-sm btn-success"
+                 onclick="find(${value.id})" >
                     <i class="fa fa-edit"></i>
                 </button>
             </td>
-            <td><button class="btn btn-sm btn-danger" >
+            <td><button class="btn btn-sm btn-danger" 
+                onclick = "removeData(${value.id})">
                      <i class="fa fa-trash"></i>
                 </button>
             </td>
@@ -137,5 +139,28 @@ function read(id1, title1, author1, year1){
         return value.id != id1
     })
     localStorage.setItem('listItem4', JSON.stringify(bookList4))
+    showData()
+}
+
+function find(id1){
+   //console.log(id1)
+    bookList = JSON.parse(localStorage.getItem('listItem4')) ?? []
+    bookList.forEach(value => {
+        //console.log(value.id)
+        if(value.id == id1){
+            document.getElementById('bookId').value = id1
+            document.getElementById('bookTitle').value = value.title
+            document.getElementById('bookAuthor').value = value.author
+            document.getElementById('bookYear').value = value.year
+        }
+    })
+}
+
+function removeData(id1){
+    bookList = JSON.parse(localStorage.getItem('listItem4')) ?? []
+    bookList = bookList.filter(value => {
+        return value.id != id1
+    })
+    localStorage.setItem('listItem4', JSON.stringify(bookList))
     showData()
 }
