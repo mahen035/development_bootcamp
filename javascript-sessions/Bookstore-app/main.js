@@ -2,8 +2,8 @@ function reset(){
     document.getElementById("form").reset()
     document.getElementById("bookId").value = ""
 }
+var bookList=[]
 var bookList2=[]
-var bookList = []
 function save(){
     let read = document.getElementById("bookComplete")
     if(read.checked == true){
@@ -61,17 +61,18 @@ function save(){
             }
             bookList2.push(item)
         }
-        localStorage.setItem('itemList4', JSON.stringify(bookList2))
+        localStorage.setItem('listItem4', JSON.stringify(bookList2))
     }
     showData()
     document.getElementById('form').reset()
 }
 
 function showData(){
-    let table = document.getElementById('dataTable')
+    //table = document.getElementById('unreadTable')
     table.innerHTML=``
-    bookList = JSON.parse(localStorage.getItem('itemList4')) ?? []
-    bookList.forEach((value, i) =>{
+    bookList2 = JSON.parse(localStorage.getItem('listItem4')) ?? []
+    bookList2.forEach((value, i) =>{
+        var table = document.getElementById('unreadTable')
         table.innerHTML += `
         <tr>
             <td>${i+1}</td>
@@ -83,10 +84,11 @@ function showData(){
             <td><button class="btn btn-sm btn-danger" >Delete</button></td>
          </tr>   `
     })
-    let table2 = document.getElementById('dataTable2')
+    //let table2 = document.getElementById('readTable')
     table2.innerHTML=``
-    bookList2 = JSON.parse(localStorage.getItem('itemList3')) ?? []
-    bookList2.forEach((value2, i) =>{
+    bookList = JSON.parse(localStorage.getItem('listItem3')) ?? []
+    bookList.forEach((value2, i) =>{
+        var table2 = document.getElementById('readTable')
         table2.innerHTML += `
         <tr>
             <td>${i+1}</td>
