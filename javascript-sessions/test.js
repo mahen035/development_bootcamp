@@ -98,6 +98,8 @@ let add = (p,q)=>p+q
 //console.log(add(20,40))
 //console.log(max(12, 62))
 
+
+//Object literal
 let employee = {
     empId:'E101',
     empName:'Dan',
@@ -117,3 +119,19 @@ console.log(employee.getSalary())
 
 //Function
 //Method: function when used inside an object
+
+//Class: class will be a blueprint for creating objects
+class User {
+    userName 
+    userAddress 
+    constructor(userName, userAddress){
+        this.userName = userName
+        this.userAddress = userAddress
+    }
+}
+let user1 = new User('Tom', 'London')
+let user2 = new User('Dave', 'New York')
+console.log(user1.userAddress)
+console.log(user2.userName)
+
+//Vanila javascript
