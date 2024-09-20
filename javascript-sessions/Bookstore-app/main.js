@@ -2,8 +2,6 @@ function reset(){
     document.getElementById("form").reset()
     document.getElementById("bookId").value = ""
 }
-var bookList=[]
-var bookList2=[]
 function save(){
     let read = document.getElementById("bookComplete")
     if(read.checked == true){
@@ -39,7 +37,7 @@ function save(){
         //var booklist2 = []
         bookList2 = JSON.parse(localStorage.getItem('listItem4')) ?? []
         var id
-        bookList2.length !=0 ? bookList.findLast((item) => id=item.id): id = 0
+        bookList2.length !=0 ? bookList2.findLast((item) => id=item.id): id = 0
         if(document.getElementById('bookId').value){
             bookList2.forEach(value=>{
                 if(document.getElementById('bookId').value == value.id){
@@ -68,11 +66,10 @@ function save(){
 }
 
 function showData(){
-    //table = document.getElementById('unreadTable')
+    var table = document.getElementById('unreadTable')
     table.innerHTML=``
-    bookList2 = JSON.parse(localStorage.getItem('listItem4')) ?? []
-    bookList2.forEach((value, i) =>{
-        var table = document.getElementById('unreadTable')
+    bookList = JSON.parse(localStorage.getItem('listItem4')) ?? []
+    bookList.forEach(function(value, i) {
         table.innerHTML += `
         <tr>
             <td>${i+1}</td>
@@ -84,11 +81,12 @@ function showData(){
             <td><button class="btn btn-sm btn-danger" >Delete</button></td>
          </tr>   `
     })
-    //let table2 = document.getElementById('readTable')
+    console.log('TABLE',table.innerHTML)
+    var table2 = document.getElementById('readTable')
     table2.innerHTML=``
-    bookList = JSON.parse(localStorage.getItem('listItem3')) ?? []
-    bookList.forEach((value2, i) =>{
-        var table2 = document.getElementById('readTable')
+    bookList2 = JSON.parse(localStorage.getItem('listItem3')) ?? []
+    bookList2.forEach(function(value2, i) {
+        //var table2 = document.getElementById('readTable')
         table2.innerHTML += `
         <tr>
             <td>${i+1}</td>
