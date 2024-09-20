@@ -76,12 +76,22 @@ function showData(){
             <td>${value.title}</td>
             <td>${value.author}</td>
             <td>${value.year}</td>
-            <td><button class="btn btn-sm btn-warning" >Read</button></td>
-            <td><button class="btn btn-sm btn-success" >Edit</button></td>
-            <td><button class="btn btn-sm btn-danger" >Delete</button></td>
+            <td><button class="btn btn-sm btn-warning" 
+                    onclick="read(${value.id}, '${value.title}', '${value.author}',${value.year})">
+                    <i class="fa fa-check"></i>
+                </button>
+            </td>
+            <td><button class="btn btn-sm btn-success" >
+                    <i class="fa fa-edit"></i>
+                </button>
+            </td>
+            <td><button class="btn btn-sm btn-danger" >
+                     <i class="fa fa-trash"></i>
+                </button>
+            </td>
          </tr>   `
     })
-    console.log('TABLE',table.innerHTML)
+    //console.log('TABLE',table.innerHTML)
     var table2 = document.getElementById('readTable')
     table2.innerHTML=``
     bookList2 = JSON.parse(localStorage.getItem('listItem3')) ?? []
@@ -93,9 +103,18 @@ function showData(){
             <td>${value2.title}</td>
             <td>${value2.author}</td>
             <td>${value2.year}</td>
-            <td><button class="btn btn-sm btn-warning" >Read</button></td>
-            <td><button class="btn btn-sm btn-success" >Edit</button></td>
-            <td><button class="btn btn-sm btn-danger" >Delete</button></td>
+            <td><button class="btn btn-sm btn-warning" >
+                    <i class="fa fa-check"></i>
+                </button>
+            </td>
+            <td><button class="btn btn-sm btn-success" >
+                    <i class="fa fa-edit"></i>
+                </button>
+            </td>
+            <td><button class="btn btn-sm btn-danger" >
+                     <i class="fa fa-trash"></i>
+                </button>
+            </td>
          </tr>   `
     })
 }
