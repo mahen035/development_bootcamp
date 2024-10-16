@@ -114,7 +114,7 @@ employee.address='New York'
 for(let emp in employee){
     console.log(employee[emp])
 }
-console.log(employee.getSalary())
+//console.log(employee.getSalary())
 //console.log(employee)
 
 //Function
@@ -131,7 +131,17 @@ class User {
 }
 let user1 = new User('Tom', 'London')
 let user2 = new User('Dave', 'New York')
-console.log(user1.userAddress)
-console.log(user2.userName)
+//console.log(user1.userAddress)
+//console.log(user2.userName)
 
 //Vanila javascript
+const posts = [{
+    'title':'test', 'content':'Test1 content'
+},{
+    'title':'test2', 'content':'Test2 content'
+}]
+
+posts.forEach((post,index) =>{
+    console.log(index)
+    console.log(post.title)
+})

@@ -1,26 +1,39 @@
+const posts = []
 document.getElementById('blogForm').addEventListener('submit', (e)=>{
     e.preventDefault();
 
-    let title = document.getElementById('title').value
-    let content = document.getElementById('content').value
+    const title = document.getElementById('title').value
+    const content = document.getElementById('content').value
 
-    addPost(title, content)
+    //add new post to the array
+    posts.push( {title, content} )
+    //addPost(title, content)
+    renderPost()
     document.getElementById('blogForm').reset()
 })
 
-function addPost(title, content){
+function renderPost(){
+   
     let postContainer = document.getElementById('posts')
+    postContainer.innerHTML = ''
+    posts.forEach((post, index) =>{
+        let postElement = document.createElement('div')
+        postElement.className = 'card mb-3'
+    
+        postElement.innerHTML = `
+            <div class='card-body'>
+                <h3 clss="card-title">${post.title}</h3>
+                <p class="card-text">${post.content}</p>
+                <button class="btn btn-secondary" onclick="editPost(${index})">Edit</button>
+            </div>    
+        `
+        postContainer.appendChild(postElement)
+    })
+}
 
-    let postElement = document.createElement('div')
-    postElement.className = 'card mb-3'
-
-    postElement.innerHTML = `
-        <div class='card-body'>
-            <h3 clss="card-title">${title}</h3>
-            <p class="card-text">${content}</p>
-        </div>    
-    `
-    postContainer.appendChild(postElement)
+function editPost(index){
+    document.getElementById('title').value = posts[index].title
+    document.getElementById('content').value = posts[index].content
 }
 
 // The content should contain alteast 20 words
