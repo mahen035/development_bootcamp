@@ -34,6 +34,7 @@ function renderPost(){
                 <h3 clss="card-title">${post.title}</h3>
                 <p class="card-text">${post.content}</p>
                 <button class="btn btn-secondary" onclick="editPost(${index})">Edit</button>
+                <button class="btn btn-danger" onclick="deletePost(${index})">Delete</button>
             </div>    
         `
         postContainer.appendChild(postElement)
@@ -44,6 +45,11 @@ function editPost(index){
     currentPostIndex = index
     document.getElementById('title').value = posts[index].title
     document.getElementById('content').value = posts[index].content
+}
+
+function deletePost(index){
+    posts.splice(index, 1)
+    renderPost()
 }
 
 // The content should contain alteast 20 words
