@@ -1,12 +1,21 @@
 const posts = []
+let currentPostIndex = null
+
 document.getElementById('blogForm').addEventListener('submit', (e)=>{
     e.preventDefault();
 
     const title = document.getElementById('title').value
     const content = document.getElementById('content').value
 
-    //add new post to the array
-    posts.push( {title, content} )
+    if(currentPostIndex !== null){
+        posts[currentPostIndex] = {title, content}
+        currentPostIndex = null;
+    }
+    else{
+         //add new post to the array
+         posts.push( {title, content} )
+    }
+   
     //addPost(title, content)
     renderPost()
     document.getElementById('blogForm').reset()
@@ -32,6 +41,7 @@ function renderPost(){
 }
 
 function editPost(index){
+    currentPostIndex = index
     document.getElementById('title').value = posts[index].title
     document.getElementById('content').value = posts[index].content
 }
