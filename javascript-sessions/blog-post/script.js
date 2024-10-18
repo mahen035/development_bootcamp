@@ -1,4 +1,4 @@
-const posts = []
+let posts = []
 let currentPostIndex = null
 
 document.getElementById('blogForm').addEventListener('submit', (e)=>{
@@ -31,7 +31,7 @@ function renderPost(){
     
         postElement.innerHTML = `
             <div class='card-body'>
-                <h3 clss="card-title">${post.title}</h3>
+                <h3 class="card-title">${post.title}</h3>
                 <p class="card-text">${post.content}</p>
                 <button class="btn btn-secondary" onclick="editPost(${index})">Edit</button>
                 <button class="btn btn-danger" onclick="deletePost(${index})">Delete</button>
@@ -48,10 +48,29 @@ function editPost(index){
 }
 
 function deletePost(index){
-    posts.splice(index, 1)
+    //posts.splice(index, 1)
+    posts=posts.filter(post=>{
+        return posts.indexOf(post) !== index 
+    })
     renderPost()
 }
 
 // The content should contain alteast 20 words
 
 // add functionality to edit a post
+
+// online doctor appointment app
+// Name: textbox
+// Ailment: dropdown
+// Date-time: Datepicker (you can only select future date)
+// comments: textarea
+// Button: Book an appointment
+// Button: Edit
+// Button: Delete
+
+// API : Application programming interface
+// https : hypertext transfer protocol
+// 1. fetch api
+// 2. axios api
+// 3. XMLHttpRequest
+
